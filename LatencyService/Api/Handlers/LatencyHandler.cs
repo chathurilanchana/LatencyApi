@@ -5,35 +5,35 @@ namespace LatencyService.Api.Handlers
 {
     public interface ILatencyHandler
     {
-        Task<LatencyModal> HandleRequest(DateTime fromDate, DateTime toDate);
+        Task<LatencyResponseModal> HandleRequest(DateTime fromDate, DateTime toDate);
     }
 
     public class LatencyHandler : ILatencyHandler
     {
-        private readonly ILatencyCalculator _latencyCalculator;
+        private readonly ILatencyDataProcessor _latencyCalculator;
 
-        public LatencyHandler(ILatencyCalculator latencyCalculator)
+        public LatencyHandler(ILatencyDataProcessor latencyCalculator)
         {
             _latencyCalculator = latencyCalculator;
         }
 
-        public async Task<LatencyModal> HandleRequest(DateTime fromDate, DateTime toDate)
+        public async Task<LatencyResponseModal> HandleRequest(DateTime fromDate, DateTime toDate)
         {
             var serviceLatencies = await _latencyCalculator.CalculateLatencies(fromDate, toDate);
 
-            var period = new LatencyModal.PeriodModal(fromDate, toDate);
+            var period = new LatencyResponseModal.PeriodModal(fromDate, toDate);
 
-            var averageLatencies = new List<LatencyModal.AverageLatency>();
+            var averageLatencies = new List<LatencyResponseModal.AverageLatency>();
 
             foreach (var serviceId in serviceLatencies.Keys)
             {
                 var serviceLatency = serviceLatencies[serviceId];
                 var averageLatency = serviceLatency.CalculateAverageLatency();
-                var averageLatencyModal = new LatencyModal.AverageLatency(serviceId, serviceLatency.NumberOfRequest, averageLatency);
+                var averageLatencyModal = new LatencyResponseModal.AverageLatency(serviceId, serviceLatency.NumberOfRequest, averageLatency);
                 averageLatencies.Add(averageLatencyModal);
             }
 
-            return new LatencyModal(period, averageLatencies);
+            return new LatencyResponseModal(period, averageLatencies);
         }
     }
 }

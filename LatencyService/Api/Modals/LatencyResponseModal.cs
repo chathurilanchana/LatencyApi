@@ -1,10 +1,10 @@
 ﻿namespace LatencyService.Api.Modals
 {
-    public class LatencyModal
+    public class LatencyResponseModal
     {
         public PeriodModal Period { get; }
 
-        public LatencyModal(PeriodModal period, List<AverageLatency> averageLatencies = null)
+        public LatencyResponseModal(PeriodModal period, List<AverageLatency> averageLatencies = null)
         {
             Period = period;
             AverageLatencies = averageLatencies ?? new List<AverageLatency>();
@@ -30,16 +30,16 @@
 
         public class AverageLatency
         {
-            public AverageLatency(byte serviceId, int numberOfRequest, int averageResponseTimeMs)
+            public AverageLatency(byte serviceId, int numberOfRequests, int averageResponseTimeMs)
             {
                 ServiceId = serviceId;
-                NumberOfRequest = numberOfRequest;
-                AVerageResponseTimeMs = averageResponseTimeMs;
+                NumberOfRequests = numberOfRequests;
+                AverageResponseTimeMs = averageResponseTimeMs;
             }
 
             public byte ServiceId { get; }
-            public int NumberOfRequest { get; }
-            public int AVerageResponseTimeMs { get; }
+            public int NumberOfRequests { get; }
+            public int AverageResponseTimeMs { get; }
         }
     }
 }

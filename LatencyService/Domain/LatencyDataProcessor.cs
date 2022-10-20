@@ -3,11 +3,11 @@ using LatencyService.Infrastructure.LatencyApi;
 
 namespace LatencyService.Domain
 {
-    public class LatencyCalculator : ILatencyCalculator
+    public class LatencyDataProcessor : ILatencyDataProcessor
     {
         private readonly ILatencyServiceClient _latencyService;
 
-        public LatencyCalculator(ILatencyServiceClient latencyService)
+        public LatencyDataProcessor(ILatencyServiceClient latencyService)
         {
             _latencyService = latencyService;
         }
@@ -44,8 +44,8 @@ namespace LatencyService.Domain
                         serviceDictionary.Add(request.ServiceId, serviceLatency);
                     }
                 }
-
             }
+
             return serviceDictionary;
         }
     }

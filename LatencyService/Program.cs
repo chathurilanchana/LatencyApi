@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using LatencyService.Api.Handlers;
+using LatencyService.Api.Validators;
 using LatencyService.Domain;
 using LatencyService.Infrastructure.LatencyApi;
 
@@ -6,15 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LatencyRequestModalValidator>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ILatencyHandler, LatencyHandler>();
-builder.Services.AddTransient<ILatencyCalculator, LatencyCalculator>();
+builder.Services.AddTransient<ILatencyDataProcessor, LatencyDataProcessor>();
 builder.Services.AddTransient<ILatencyServiceClient, LatencyServiceClient>();
 builder.Services.AddHttpClient<LatencyServiceClient>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

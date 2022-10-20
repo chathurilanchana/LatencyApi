@@ -85,9 +85,9 @@ namespace LatencyService.UnitTests.Domain
             service1Latencies.CalculateAverageLatency().ShouldBe(120 / 2);
         }
 
-        private LatencyCalculator GetSut()
+        private LatencyDataProcessor GetSut()
         {
-            return new LatencyCalculator(_latencyServiceClient.Object);
+            return new LatencyDataProcessor(_latencyServiceClient.Object);
         }
     }
 
