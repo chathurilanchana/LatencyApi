@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LatencyService", "LatencyService.csproj", "{D73693BC-0E3A-4160-A041-59DEE9A28D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LatencyService", "LatencyService.csproj", "{D73693BC-0E3A-4160-A041-59DEE9A28D11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LatencyService.UnitTests", "..\LatencyService.UnitTests\LatencyService.UnitTests.csproj", "{D939ED90-CC5F-4A59-88EE-B6446F045DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D73693BC-0E3A-4160-A041-59DEE9A28D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73693BC-0E3A-4160-A041-59DEE9A28D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73693BC-0E3A-4160-A041-59DEE9A28D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D939ED90-CC5F-4A59-88EE-B6446F045DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D939ED90-CC5F-4A59-88EE-B6446F045DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D939ED90-CC5F-4A59-88EE-B6446F045DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D939ED90-CC5F-4A59-88EE-B6446F045DE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

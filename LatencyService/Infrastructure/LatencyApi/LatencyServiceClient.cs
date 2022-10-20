@@ -3,7 +3,11 @@ using System.Text.Json;
 
 namespace LatencyService.Infrastructure.LatencyApi
 {
-    public class LatencyServiceClient
+    public interface ILatencyServiceClient
+    {
+        Task<IEnumerable<LatencyRecord>?> Get(DateTime date);
+    }
+    public class LatencyServiceClient : ILatencyServiceClient
     {
         private readonly HttpClient _httpClient;
 

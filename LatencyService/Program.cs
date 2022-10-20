@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ILatencyHandler, LatencyHandler>();
 builder.Services.AddTransient<ILatencyCalculator, LatencyCalculator>();
+builder.Services.AddTransient<ILatencyServiceClient, LatencyServiceClient>();
 builder.Services.AddHttpClient<LatencyServiceClient>();
 var app = builder.Build();
 

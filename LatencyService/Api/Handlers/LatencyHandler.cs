@@ -5,7 +5,7 @@ namespace LatencyService.Api.Handlers
 {
     public interface ILatencyHandler
     {
-        Task<LatencyModal> CalculateLatency(DateTime fromDate, DateTime toDate);
+        Task<LatencyModal> HandleRequest(DateTime fromDate, DateTime toDate);
     }
 
     public class LatencyHandler : ILatencyHandler
@@ -17,7 +17,7 @@ namespace LatencyService.Api.Handlers
             _latencyCalculator = latencyCalculator;
         }
 
-        public async Task<LatencyModal> CalculateLatency(DateTime fromDate, DateTime toDate)
+        public async Task<LatencyModal> HandleRequest(DateTime fromDate, DateTime toDate)
         {
             var serviceLatencies = await _latencyCalculator.CalculateLatencies(fromDate, toDate);
 

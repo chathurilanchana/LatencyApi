@@ -5,9 +5,9 @@ namespace LatencyService.Domain
 {
     public class LatencyCalculator : ILatencyCalculator
     {
-        private readonly LatencyServiceClient _latencyService;
+        private readonly ILatencyServiceClient _latencyService;
 
-        public LatencyCalculator(LatencyServiceClient latencyService)
+        public LatencyCalculator(ILatencyServiceClient latencyService)
         {
             _latencyService = latencyService;
         }
@@ -27,7 +27,8 @@ namespace LatencyService.Domain
                 if (latencyRecords == null  || latencyRecords.Count() ==0 )
                     continue;
 
-                var distinctRequests = latencyRecords.DistinctBy(x => x.RequestId);
+                //NOTE: Duplicate request ids are not possible in the same day and same service, but can happen in same day in different services or different days
+                var distinctRequests = latencyRecords.DistinctBy(x => new { x.RequestId, x.ServiceId });
                 
                 foreach(var request in distinctRequests)
                 {
