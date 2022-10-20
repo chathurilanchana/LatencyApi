@@ -38,8 +38,8 @@ namespace LatencyService.UnitTests.Domain
             service1Latencies.CalculateAverageLatency().ShouldBe((120 / 2));
 
             var service2Latencies = result[2];
-            service1Latencies.NumberOfRequest.ShouldBe(2 * 3);
-            service1Latencies.CalculateAverageLatency().ShouldBe((90 / 2));
+            service2Latencies.NumberOfRequest.ShouldBe(2 * 3);
+            service2Latencies.CalculateAverageLatency().ShouldBe((90 / 2));
         }
 
 
