@@ -1,0 +1,10 @@
+*.suo
+*.user
+*.dbmdl
+*.jfm
+_ReSharper.*
+bin/
+obj/
+packages
+.vs/
+logs/
